@@ -1,0 +1,12 @@
+<div id="search-component">
+    <label for="search-box">Accountancy Search</label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let accountancy of accountancies$ | async" >
+        <a routerLink="/accountancies/{{accountancy.key}}">
+          {{accountancy.name}}
+        </a>
+      </li>
+    </ul>
+  </div>

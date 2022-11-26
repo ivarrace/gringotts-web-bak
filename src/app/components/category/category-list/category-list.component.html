@@ -1,0 +1,7 @@
+<h2>Categories list</h2>
+<p *ngFor="let category of categories">
+    <app-category-list-item [category] ="category" [groupKey]="groupKey" [groupType]="groupType" [accountancyKey]="accountancyKey" (deleteRequest)="deleteRequest(category)"></app-category-list-item>
+</p>
+
+<h2>ADD category</h2>
+<app-category-form [categories]="categories" [groupKey]="groupKey" [groupType]="groupType" [accountancyKey]="accountancyKey"></app-category-form>

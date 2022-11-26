@@ -1,0 +1,7 @@
+  <mat-card *ngIf="accountancy" class="accountancy-details-card" >
+    <mat-card-content>
+      <button mat-button routerLink="/accountancies/{{accountancy.key}}">></button>
+      {{accountancy.name}}
+      <button mat-button (click)="delete()">X</button>
+    </mat-card-content>
+  </mat-card>

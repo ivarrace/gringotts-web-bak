@@ -1,0 +1,18 @@
+
+  <mat-card class="category-form-card">
+    <mat-card-header>
+      <mat-card-title>Add new category</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <label for="new-category">Category name: </label>
+    <input id="new-category" #categoryName />
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <mat-error *ngIf="errorMsg">
+        {{errorMsg}}
+      </mat-error>
+      <button mat-button (click)="add(categoryName.value); categoryName.value=''">ADD</button>
+    </mat-card-actions>
+  </mat-card>
+  

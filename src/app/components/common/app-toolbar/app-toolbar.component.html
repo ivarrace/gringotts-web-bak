@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <span>Gringotts</span>
+  <a mat-button routerLink="/dashboard">Dashboard</a>
+  <a mat-button routerLink="/accountancies">Accountancies</a>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-space"></span>
+  <span *ngIf="!authService.isLoggedIn; else noLoggedInHeader">
+    <a
+      mat-stroked-button
+      color="accent"
+      routerLink="register"
+      routerLinkActive="active"
+    >
+      Register
+    </a>
+    <a
+      mat-raised-button
+      color="accent"
+      routerLink="login"
+      routerLinkActive="active"
+    >
+      Log in
+    </a>
+  </span>
+  <ng-template #noLoggedInHeader>
+    <a mat-raised-button color="accent" (click)="logout()"> Log out </a>
+  </ng-template>
+</mat-toolbar>

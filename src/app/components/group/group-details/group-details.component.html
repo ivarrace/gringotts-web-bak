@@ -1,0 +1,32 @@
+<mat-card *ngIf="group" class="group-details-card">
+    <mat-card-header>
+      <mat-card-title>group details</mat-card-title>
+      <mat-card-subtitle>{{group.key}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <label for="group-name">group name: </label>
+        <input id="group-name" [(ngModel)]="group.name" placeholder="name">
+      </div>
+      <div>
+        <label for="group-created-at">Created at: </label>
+        <input id="group-created-at" [(ngModel)]="group.createdDate" placeholder="createdDate" disabled>
+      </div>
+      <div>
+        <label for="group-modified-at">Last modified: </label>
+        <input id="group-modified-at" [(ngModel)]="group.lastModified" placeholder="lastModified" disabled>
+      </div>
+      <div>
+        <button mat-button routerLink="/accountancies/{{accountancyKey}}/{{groupType}}/{{group.key}}/categories">Got to categories</button>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-error *ngIf="errorMsg">
+        {{errorMsg}}
+      </mat-error>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button (click)="goBack()">GO BACK</button>
+      <button mat-button (click)="save()">SAVE</button>
+    </mat-card-actions>
+  </mat-card>
+  

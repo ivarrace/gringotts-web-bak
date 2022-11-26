@@ -1,0 +1,7 @@
+<mat-card *ngIf="category" class="category-details-card" >
+    <mat-card-content>
+      <button mat-button routerLink="/accountancies/{{accountancyKey}}/{{groupType}}/{{groupKey}}/categories/{{category.key}}">></button>
+      {{category.name}}
+      <button mat-button (click)="delete()">X</button>
+    </mat-card-content>
+  </mat-card>

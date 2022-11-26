@@ -1,0 +1,7 @@
+<mat-card *ngIf="group" class="group-details-card" >
+    <mat-card-content>
+      <button mat-button routerLink="/accountancies/{{accountancyKey}}/{{groupType}}/{{group.key}}">></button>
+      {{group.name}}
+      <button mat-button (click)="delete()">X</button>
+    </mat-card-content>
+  </mat-card>
