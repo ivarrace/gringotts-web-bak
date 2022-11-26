@@ -8,24 +8,18 @@ import { AccountancyListComponent } from './components/accountancy/accountancy-l
 import { AccountancyDetailsComponent } from './components/accountancy/accountancy-details/accountancy-details.component';
 import { LogInComponent } from './components/common/log-in/log-in.component';
 import { RegisterComponent } from './components/common/register/register.component';
-import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { GroupListComponent } from './components/group/group-list/group-list.component';
 import { GroupDetailsComponent } from './components/group/group-details/group-details.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/accountancies', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'profile',
-    component: UserProfileComponent,
     canActivate: [AuthGuard]
   },
   {

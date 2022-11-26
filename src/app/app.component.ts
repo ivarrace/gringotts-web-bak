@@ -1,17 +1,17 @@
-import { Component } from '@angular/core'
-import { AuthService } from './shared/auth.service'
+import { Component } from '@angular/core';
+import { AuthService } from './shared/auth.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Gringotts'
+  title = 'Gringotts';
 
-    constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
-    logout() {
-        this.authService.doLogout()
-    }
+  logout() {
+    this.authService.doLogout();
+  }
 }

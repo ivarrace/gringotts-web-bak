@@ -1,4 +1,4 @@
 export interface RegisterFormData {
-    username: string
-    password: string
+  username: string;
+  password: string;
 }

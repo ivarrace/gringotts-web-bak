@@ -18,7 +18,6 @@ import { AccountancySearchComponent } from './components/accountancy/accountancy
 import { AppToolbarComponent } from './components/common/app-toolbar/app-toolbar.component';
 import { LogInComponent } from './components/common/log-in/log-in.component';
 import { RegisterComponent } from './components/common/register/register.component';
-import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { AccountancyFormComponent } from './components/accountancy/accountancy-form/accountancy-form.component';
 import { AccountancyListItemComponent } from './components/accountancy/accountancy-list-item/accountancy-list-item.component';
 import { GroupListComponent } from './components/group/group-list/group-list.component';
@@ -40,7 +39,6 @@ import { CategoryFormComponent } from './components/category/category-form/categ
     AppToolbarComponent,
     LogInComponent,
     RegisterComponent,
-    UserProfileComponent,
     AccountancyFormComponent,
     AccountancyListItemComponent,
     GroupListComponent,
