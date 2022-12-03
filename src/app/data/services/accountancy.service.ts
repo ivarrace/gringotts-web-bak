@@ -31,6 +31,11 @@ export class AccountancyService {
     return this.http.get<Accountancy>(url);
   }
 
+  getAccountancySummary(key: string): Observable<Accountancy> {
+    const url = `${this.accountanciesApiUrl}/${key}/summary`;
+    return this.http.get<Accountancy>(url);
+  }
+
   add(accountancy: Accountancy): Observable<Accountancy> {
     return this.http.post<Accountancy>(
       this.accountanciesApiUrl,

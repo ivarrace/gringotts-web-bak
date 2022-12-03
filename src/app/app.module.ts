@@ -28,6 +28,9 @@ import { CategoryListComponent } from './components/category/category-list/categ
 import { CategoryListItemComponent } from './components/category/category-list-item/category-list-item.component';
 import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
+import { AccountancyReportComponent } from './components/dashboard/accountancy-report/accountancy-report.component';
+import { GroupTableComponent } from './components/dashboard/group-table/group-table.component';
+import { MovementFormComponent } from './components/dashboard/movement-form/movement-form.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { CategoryFormComponent } from './components/category/category-form/categ
     CategoryListComponent,
     CategoryListItemComponent,
     CategoryDetailsComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    AccountancyReportComponent,
+    GroupTableComponent,
+    MovementFormComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,6 @@ import { CategoryFormComponent } from './components/category/category-form/categ
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule
-    //FlexLayoutModule
   ],
   providers: [
     {

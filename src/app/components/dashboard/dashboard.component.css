@@ -1,3 +1,8 @@
 .accountancy-summary-card {
   max-width: 800px;
 }
+
+.accountancy-summary-card-header {
+  cursor: pointer;
+  cursor: hand;
+}

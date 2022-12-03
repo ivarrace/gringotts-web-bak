@@ -2,15 +2,17 @@
 
 <p *ngFor="let accountancy of accountancies">
   <mat-card class="accountancy-summary-card">
-    <mat-card-header>
+    <mat-card-header
+      class="accountancy-summary-card-header"
+      routerLink="/dashboard/accountancies/{{ accountancy.key }}/report"
+    >
       <mat-card-title>{{ accountancy.name }}</mat-card-title>
       <mat-card-subtitle>{{
         accountancy.lastModified | date : 'medium'
       }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>This card indeterminates progress bar.</p>
-      <p>[TABLAS]</p>
+      <p>[GRAFICAS]</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button routerLink="/accountancies/{{ accountancy.key }}">

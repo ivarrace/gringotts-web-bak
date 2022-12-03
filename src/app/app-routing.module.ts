@@ -12,6 +12,7 @@ import { GroupListComponent } from './components/group/group-list/group-list.com
 import { GroupDetailsComponent } from './components/group/group-details/group-details.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
+import { AccountancyReportComponent } from './components/dashboard/accountancy-report/accountancy-report.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -19,8 +20,18 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'accountancies/:accountancyKey/report',
+        component: AccountancyReportComponent,
+        canActivate: [AuthGuard]
+      }
+    ]
   },
   {
     path: 'accountancies',

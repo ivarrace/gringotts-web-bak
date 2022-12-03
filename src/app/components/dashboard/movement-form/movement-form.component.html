@@ -1,0 +1,47 @@
+<mat-dialog-content class="mat-typography">
+  <h2 mat-dialog-title>Add Movement</h2>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="data.movement.date"
+      />
+      <mat-hint>YYYY-MM-DD</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="data.movement.amount" />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Info</mat-label>
+      <textarea matInput [(ngModel)]="data.movement.info"></textarea>
+    </mat-form-field>
+  </p>
+  <h2 mat-dialog-title>Movement history</h2>
+  <ul>
+    <li *ngFor="let movement of movementsHistory">
+      [{{ movement.amount }}] {{ movement.info }} ({{ movement.date }})
+    </li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="save(data.movement)"
+  >
+    Add
+  </button>
+</mat-dialog-actions>
