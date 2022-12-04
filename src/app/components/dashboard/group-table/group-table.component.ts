@@ -25,35 +25,38 @@ export class GroupTableComponent implements OnInit {
   groupType!: string;
   @Input()
   group!: Group;
+  @Input()
+  reportYear!: number;
 
   totalCols = 0;
   totalRows = 0;
-  constructor(
-    private movementService: MovementService,
-    public dialog: MatDialog
-  ) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.totalCols = 16;
     this.totalRows = this.group.categories.length + 1;
   }
 
-  alert(category: string, month: number) {
+  showMovements(category: string, month: string) {
     const movement: Movement = {
       accountancyKey: this.accountancyKey,
       groupType: this.groupType.toUpperCase(),
       groupKey: this.group.key,
       categoryKey: category,
-      date: `2022-${('0' + month).slice(-2)}-01`,
-      amount: 42,
-      info: 'Random values'
+      date: this.getDate(month),
+      amount: 0,
+      info: ''
     };
-    this.openDialog(movement);
-  }
-
-  openDialog(movement: Movement) {
     this.dialog.open(MovementFormComponent, {
       data: { movement: movement, group: this.group }
     });
+  }
+
+  private getDate(month: string) {
+    const monthOrdinal = (
+      '0' +
+      (new Date(`${month} 1, ${this.reportYear}`).getMonth() + 1)
+    ).slice(-2);
+    return `${this.reportYear}-${monthOrdinal}-01`;
   }
 }

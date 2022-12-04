@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>
       {{ accountancy.name }}
-      || [report period]
+      || {{ reportYear }}
     </mat-card-title>
     <mat-card-subtitle>{{
       accountancy.lastModified | date : 'medium'
@@ -64,6 +64,7 @@
           [group]="group"
           [accountancyKey]="accountancy.key"
           groupType="expenses"
+          [reportYear]="reportYear"
         ></app-group-table>
       </mat-tab>
       <mat-tab label="Ingresos" *ngIf="accountancy.incomes">
@@ -72,6 +73,7 @@
           [group]="group"
           [accountancyKey]="accountancy.key"
           groupType="incomes"
+          [reportYear]="reportYear"
         ></app-group-table
       ></mat-tab>
     </mat-tab-group>

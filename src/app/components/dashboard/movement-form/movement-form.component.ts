@@ -39,8 +39,7 @@ export class MovementFormComponent implements OnInit {
     }
     this.movementService.add(movement).subscribe({
       next: (response: Movement) => {
-        console.log(response);
-        this.updateGroupSummary(movement);
+        this.updateGroupAnnualSummary(response, movement.categoryKey);
         //this.errorMsg = '';
       },
       error: (error: HttpErrorResponse) => {
@@ -51,22 +50,27 @@ export class MovementFormComponent implements OnInit {
     });
   }
 
-  private updateGroupSummary(movement: Movement) {
-    this.data.group.summary.total += +movement.amount;
-    this.data.group.summary.average = this.data.group.summary.total / 12;
-    this.data.group.summary.monthly[this.getDateMonth(movement.date)].value +=
-      +movement.amount;
+  private updateGroupAnnualSummary(movement: Movement, categoryKey: string) {
+    this.data.group.annualSummary.total += +movement.amount;
+    this.data.group.annualSummary.average =
+      this.data.group.annualSummary.total / 12;
+    this.data.group.annualSummary.monthly[
+      this.getDateMonth(movement.date)
+    ].total += +movement.amount;
     for (let i = 0; i < this.data.group.categories.length; i++) {
-      if (this.data.group.categories[i].key === movement.categoryKey) {
-        this.updateCategorySummary(movement, this.data.group.categories[i]);
+      if (this.data.group.categories[i].key === categoryKey) {
+        this.updateCategoryAnnualSummary(
+          movement,
+          this.data.group.categories[i]
+        );
       }
     }
   }
 
-  private updateCategorySummary(movement: Movement, category: Category) {
-    category.summary.total += +movement.amount;
-    category.summary.average = category.summary.total / 12;
-    category.summary.monthly[this.getDateMonth(movement.date)].value +=
+  private updateCategoryAnnualSummary(movement: Movement, category: Category) {
+    category.annualSummary.total += +movement.amount;
+    category.annualSummary.average = category.annualSummary.total / 12;
+    category.annualSummary.monthly[this.getDateMonth(movement.date)].total +=
       +movement.amount;
   }
 

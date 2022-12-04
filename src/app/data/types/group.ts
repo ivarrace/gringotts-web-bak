@@ -1,5 +1,5 @@
 import { Category } from './category';
-import { Summary } from './summary';
+import { AnnualSummary } from './annualSummary';
 
 export interface Group {
   key: string;
@@ -7,5 +7,5 @@ export interface Group {
   createdDate: string;
   lastModified: string;
   categories: Category[];
-  summary: Summary;
+  annualSummary: AnnualSummary;
 }

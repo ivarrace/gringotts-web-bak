@@ -1,10 +1,10 @@
-import { Summary } from './summary';
+import { AnnualSummary } from './annualSummary';
 
 export interface Category {
   key: string;
   name: string;
   createdDate: string;
   lastModified: string;
-  summary: Summary;
+  annualSummary: AnnualSummary;
   //movements: number
 }

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpHeaders,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpParams
 } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
@@ -31,9 +32,13 @@ export class AccountancyService {
     return this.http.get<Accountancy>(url);
   }
 
-  getAccountancySummary(key: string): Observable<Accountancy> {
+  getAccountancySummary(key: string, year: number): Observable<Accountancy> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: new HttpParams().set('year', year)
+    };
     const url = `${this.accountanciesApiUrl}/${key}/summary`;
-    return this.http.get<Accountancy>(url);
+    return this.http.get<Accountancy>(url, httpOptions);
   }
 
   add(accountancy: Accountancy): Observable<Accountancy> {

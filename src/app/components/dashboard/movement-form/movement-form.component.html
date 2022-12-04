@@ -8,7 +8,7 @@
         [matDatepicker]="picker"
         [(ngModel)]="data.movement.date"
       />
-      <mat-hint>YYYY-MM-DD</mat-hint>
+      <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"
@@ -30,7 +30,8 @@
   <h2 mat-dialog-title>Movement history</h2>
   <ul>
     <li *ngFor="let movement of movementsHistory">
-      [{{ movement.amount }}] {{ movement.info }} ({{ movement.date }})
+      [{{ movement.amount | currency : 'EUR' : 'symbol' }}]
+      {{ movement.info }} ({{ movement.date }})
     </li>
   </ul>
 </mat-dialog-content>

@@ -1,4 +1,6 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
+import es from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -31,6 +33,8 @@ import { CategoryFormComponent } from './components/category/category-form/categ
 import { AccountancyReportComponent } from './components/dashboard/accountancy-report/accountancy-report.component';
 import { GroupTableComponent } from './components/dashboard/group-table/group-table.component';
 import { MovementFormComponent } from './components/dashboard/movement-form/movement-form.component';
+
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
@@ -70,6 +74,10 @@ import { MovementFormComponent } from './components/dashboard/movement-form/move
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-ES'
     }
   ],
   bootstrap: [AppComponent],

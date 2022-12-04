@@ -34,6 +34,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 const materialModules = [
   CdkTreeModule,
@@ -73,6 +74,7 @@ const materialModules = [
 ];
 @NgModule({
   imports: [CommonModule, ...materialModules],
-  exports: [...materialModules]
+  exports: [...materialModules],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }]
 })
 export class AngularMaterialModule {}
