@@ -15,7 +15,7 @@ import { Movement } from '../types/movement';
   providedIn: 'root'
 })
 export class MovementService {
-  private movementsApiUrl = 'http://localhost:8080/api/movements/'; // URL to web api
+  private apiUrl = 'http://localhost:8080/api'; // URL to web api
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +30,7 @@ export class MovementService {
         .set('monthOrdinal', this.getDateMonth(movement.date))
         .set('year', '2022')
     };
-    const url = `${this.movementsApiUrl}`;
+    const url = `${this.apiUrl}/accountancy/${movement.accountancyKey}/movements/`;
     return this.http.get<Movement[]>(url, httpOptions);
   }
 
@@ -39,7 +39,7 @@ export class MovementService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     return this.http.post<Movement>(
-      this.movementsApiUrl,
+      `${this.apiUrl}/accountancy/${movement.accountancyKey}/movements/`,
       movement,
       httpOptions
     );
