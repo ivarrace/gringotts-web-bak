@@ -9,10 +9,6 @@ import { Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MovementFormComponent } from '../movement-form/movement-form.component';
 
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
-
 @Component({
   selector: 'app-group-table',
   templateUrl: './group-table.component.html',
@@ -27,6 +23,8 @@ export class GroupTableComponent implements OnInit {
   group!: Group;
   @Input()
   reportYear!: number;
+  @Input()
+  accountancy!: number;
 
   totalCols = 0;
   totalRows = 0;
@@ -35,6 +33,9 @@ export class GroupTableComponent implements OnInit {
   ngOnInit(): void {
     this.totalCols = 16;
     this.totalRows = this.group.categories.length + 1;
+    this.group.annualSummary.monthly.map((monthlySummary) => {
+      monthlySummary.total = Math.abs(monthlySummary.total);
+    });
   }
 
   showMovements(category: string, month: string) {
@@ -48,7 +49,11 @@ export class GroupTableComponent implements OnInit {
       info: ''
     };
     this.dialog.open(MovementFormComponent, {
-      data: { movement: movement, group: this.group }
+      data: {
+        movement: movement,
+        group: this.group,
+        groupType: this.groupType.toUpperCase()
+      }
     });
   }
 
@@ -58,5 +63,9 @@ export class GroupTableComponent implements OnInit {
       (new Date(`${month} 1, ${this.reportYear}`).getMonth() + 1)
     ).slice(-2);
     return `${this.reportYear}-${monthOrdinal}-01`;
+  }
+
+  absValue(value: number) {
+    return Math.abs(value);
   }
 }

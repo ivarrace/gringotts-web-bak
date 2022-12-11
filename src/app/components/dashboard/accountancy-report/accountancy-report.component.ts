@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Accountancy } from 'src/app/data/types/accountancy';
 import { AccountancyService } from 'src/app/data/services/accountancy.service';
+import { AnnualSummary } from 'src/app/data/types/annualSummary';
 
 export interface Tile {
   color: string;

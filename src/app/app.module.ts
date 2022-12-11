@@ -9,10 +9,9 @@ import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
-
 import { AccountancyListComponent } from './components/accountancy/accountancy-list/accountancy-list.component';
 import { AccountancyDetailsComponent } from './components/accountancy/accountancy-details/accountancy-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -33,6 +32,7 @@ import { CategoryFormComponent } from './components/category/category-form/categ
 import { AccountancyReportComponent } from './components/dashboard/accountancy-report/accountancy-report.component';
 import { GroupTableComponent } from './components/dashboard/group-table/group-table.component';
 import { MovementFormComponent } from './components/dashboard/movement-form/movement-form.component';
+import { AccountancyChartComponent } from './components/dashboard/accountancy-chart/accountancy-chart.component';
 
 registerLocaleData(es);
 
@@ -58,7 +58,8 @@ registerLocaleData(es);
     CategoryFormComponent,
     AccountancyReportComponent,
     GroupTableComponent,
-    MovementFormComponent
+    MovementFormComponent,
+    AccountancyChartComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +68,8 @@ registerLocaleData(es);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    NgApexchartsModule
   ],
   providers: [
     {

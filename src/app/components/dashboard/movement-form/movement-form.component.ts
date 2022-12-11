@@ -9,6 +9,7 @@ import { Category } from 'src/app/data/types/category';
 export interface DialogData {
   movement: Movement;
   group: Group;
+  groupType: string;
 }
 
 @Component({
@@ -51,12 +52,18 @@ export class MovementFormComponent implements OnInit {
   }
 
   private updateGroupAnnualSummary(movement: Movement, categoryKey: string) {
-    this.data.group.annualSummary.total += +movement.amount;
+    this.data.group.annualSummary.total += movement.amount;
     this.data.group.annualSummary.average =
       this.data.group.annualSummary.total / 12;
-    this.data.group.annualSummary.monthly[
-      this.getDateMonth(movement.date)
-    ].total += +movement.amount;
+    if (this.data.groupType === 'EXPENSES') {
+      this.data.group.annualSummary.monthly[
+        this.getDateMonth(movement.date)
+      ].total -= movement.amount * -1;
+    } else {
+      this.data.group.annualSummary.monthly[
+        this.getDateMonth(movement.date)
+      ].total += movement.amount;
+    }
     for (let i = 0; i < this.data.group.categories.length; i++) {
       if (this.data.group.categories[i].key === categoryKey) {
         this.updateCategoryAnnualSummary(
@@ -68,10 +75,12 @@ export class MovementFormComponent implements OnInit {
   }
 
   private updateCategoryAnnualSummary(movement: Movement, category: Category) {
-    category.annualSummary.total += +movement.amount;
+    category.annualSummary.total += movement.amount;
     category.annualSummary.average = category.annualSummary.total / 12;
     category.annualSummary.monthly[this.getDateMonth(movement.date)].total +=
-      +movement.amount;
+      this.data.groupType === 'EXPENSES'
+        ? movement.amount * -1
+        : movement.amount;
   }
 
   private getDateMonth(dateString: string) {

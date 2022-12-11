@@ -14,7 +14,9 @@
         [colspan]="1"
         class="group-table-category-header"
         *ngFor="let monthSummary of group.annualSummary.monthly"
-        >{{ monthSummary.total | currency : 'EUR' : 'symbol' }}</mat-grid-tile
+        >{{
+          absValue(monthSummary.total) | currency : 'EUR' : 'symbol'
+        }}</mat-grid-tile
       >
       <mat-grid-tile [colspan]="1" class="group-table-category-header">{{
         group.annualSummary.total | currency : 'EUR' : 'symbol'
@@ -30,7 +32,9 @@
         *ngFor="let monthSummary of category.annualSummary.monthly"
         (click)="showMovements(category.key, monthSummary.month)"
         class="editable-grid-tile"
-        >{{ monthSummary.total | currency : 'EUR' : 'symbol' }}</mat-grid-tile
+        >{{
+          absValue(monthSummary.total) | currency : 'EUR' : 'symbol'
+        }}</mat-grid-tile
       >
       <mat-grid-tile [colspan]="1">{{
         category.annualSummary.total | currency : 'EUR' : 'symbol'
