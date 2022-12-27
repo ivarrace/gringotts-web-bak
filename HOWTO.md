@@ -25,13 +25,3 @@ Doc [link](https://angular-folder-structure.readthedocs.io/en/latest/overview.ht
 ### 4. Charts
 
 Doc [link](https://apexcharts.com/angular-chart-demos/)
-
-### 5. Other
-
-#### 5.1 Docker buid
-
-Custom npm script in `package.json`
-
-```bash
-npm run docker:build
-```

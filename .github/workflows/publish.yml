@@ -16,7 +16,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get version env variable
+        run: |
+          echo "RELEASE_VERSION=$(npm run get-version)" >> $GITHUB_ENV
+
       - name: Build & Push gringotts-web Docker image
         run: |
-          npm run docker:build
-          npm run docker:push
+          docker build -t ghcr.io/ivarrace/gringotts-web:${{ env.RELEASE_VERSION }} .
+          docker push ghcr.io/ivarrace/gringotts-web:${{ env.RELEASE_VERSION }}
