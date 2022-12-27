@@ -1,0 +1,22 @@
+name: Build & Publish
+
+on: workflow_dispatch
+
+jobs:
+  publish-gringotts-core-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & Push gringotts-web Docker image
+        run: |
+          npm run docker:build
+          npm run docker:push
