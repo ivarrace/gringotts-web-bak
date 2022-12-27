@@ -1,0 +1,16 @@
+<h2>{{ groupType }} groups list</h2>
+<p *ngFor="let group of groups">
+  <app-group-list-item
+    [group]="group"
+    [groupType]="groupType"
+    [accountancyKey]="accountancyKey"
+    (deleteRequest)="deleteRequest(group)"
+  ></app-group-list-item>
+</p>
+
+<h2>ADD {{ groupType }} group</h2>
+<app-group-form
+  [groups]="groups"
+  [groupType]="groupType"
+  [accountancyKey]="accountancyKey"
+></app-group-form>

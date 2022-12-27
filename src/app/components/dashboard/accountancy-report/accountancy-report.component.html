@@ -1,0 +1,139 @@
+<mat-card *ngIf="accountancy">
+  <mat-card-header>
+    <mat-card-title>
+      {{ accountancy.name }}
+      || {{ reportYear }}
+    </mat-card-title>
+    <mat-card-subtitle>{{
+      accountancy.lastModified | date : 'medium'
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content
+    ><mat-tab-group>
+      <mat-tab label="Resumen" *ngIf="accountancy.annualSummary">
+        <app-accountancy-chart
+          [annualSummary]="accountancy.annualSummary"
+        ></app-accountancy-chart
+      ></mat-tab>
+      <mat-tab label="Gastos">
+        Gastos ({{ accountancy.expenses.length }} grupos)
+        <mat-grid-list cols="16">
+          <mat-grid-tile [colspan]="2" class="group-table-header"
+            >Gastos</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >ene</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >feb</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >mar</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >abr</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >may</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >jun</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >jul</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >ago</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >sep</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >oct</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >nov</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >dic</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >total</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >promedio</mat-grid-tile
+          >
+        </mat-grid-list>
+        <app-group-table
+          *ngFor="let group of accountancy.expenses"
+          [group]="group"
+          [accountancyKey]="accountancy.key"
+          groupType="expenses"
+          [reportYear]="reportYear"
+        ></app-group-table>
+      </mat-tab>
+      <mat-tab label="Ingresos" *ngIf="accountancy.incomes">
+        Ingresos ({{ accountancy.incomes.length }} grupos)
+        <mat-grid-list cols="16">
+          <mat-grid-tile [colspan]="2" class="group-table-header"
+            >Ingresos</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >ene</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >feb</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >mar</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >abr</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >may</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >jun</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >jul</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >ago</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >sep</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >oct</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >nov</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >dic</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >total</mat-grid-tile
+          >
+          <mat-grid-tile [colspan]="1" class="group-table-header"
+            >promedio</mat-grid-tile
+          > </mat-grid-list
+        ><app-group-table
+          *ngFor="let group of accountancy.incomes"
+          [group]="group"
+          [accountancyKey]="accountancy.key"
+          groupType="incomes"
+          [reportYear]="reportYear"
+        ></app-group-table
+      ></mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button routerLink="/dashboard">BACK</button>
+    <button mat-button routerLink="/accountancies/{{ accountancy.key }}">
+      CONFIG
+    </button>
+  </mat-card-actions>
+</mat-card>

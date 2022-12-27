@@ -1,0 +1,13 @@
+<h2>Accountancies list</h2>
+<p *ngFor="let accountancy of accountancies">
+  <app-accountancy-list-item
+    [accountancy]="accountancy"
+    (deleteRequest)="deleteRequest(accountancy)"
+  ></app-accountancy-list-item>
+</p>
+
+<h2>ADD</h2>
+<app-accountancy-form [accountancies]="accountancies"></app-accountancy-form>
+
+<h2>SEARCH</h2>
+<app-accountancy-search></app-accountancy-search>

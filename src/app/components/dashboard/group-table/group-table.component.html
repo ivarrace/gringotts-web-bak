@@ -1,0 +1,48 @@
+<div *ngIf="group.annualSummary">
+  <mat-grid-list cols="{{ totalCols }}">
+    <div>
+      <mat-grid-tile
+        [colspan]="1"
+        rowspan="{{ totalRows }}"
+        class="group-table-category-name"
+        >{{ group.name }}</mat-grid-tile
+      >
+      <mat-grid-tile [colspan]="1" class="group-table-category-header"
+        >total</mat-grid-tile
+      >
+      <mat-grid-tile
+        [colspan]="1"
+        class="group-table-category-header"
+        *ngFor="let monthSummary of group.annualSummary.monthly"
+        >{{
+          absValue(monthSummary.total) | currency : 'EUR' : 'symbol'
+        }}</mat-grid-tile
+      >
+      <mat-grid-tile [colspan]="1" class="group-table-category-header">{{
+        group.annualSummary.total | currency : 'EUR' : 'symbol'
+      }}</mat-grid-tile>
+      <mat-grid-tile [colspan]="1" class="group-table-category-header">{{
+        group.annualSummary.average | currency : 'EUR' : 'symbol'
+      }}</mat-grid-tile>
+    </div>
+    <div *ngFor="let category of group.categories">
+      <mat-grid-tile [colspan]="1">{{ category.name }}</mat-grid-tile>
+      <mat-grid-tile
+        [colspan]="1"
+        *ngFor="let monthSummary of category.annualSummary.monthly"
+        (click)="showMovements(category.key, monthSummary.month)"
+        class="editable-grid-tile"
+        >{{
+          absValue(monthSummary.total) | currency : 'EUR' : 'symbol'
+        }}</mat-grid-tile
+      >
+      <mat-grid-tile [colspan]="1">{{
+        category.annualSummary.total | currency : 'EUR' : 'symbol'
+      }}</mat-grid-tile>
+      <mat-grid-tile [colspan]="1">{{
+        category.annualSummary.average | currency : 'EUR' : 'symbol'
+      }}</mat-grid-tile>
+    </div>
+    <div><mat-grid-tile [colspan]="1"></mat-grid-tile></div>
+  </mat-grid-list>
+</div>
